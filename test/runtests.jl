@@ -1,7 +1,7 @@
 using Test
 using ScaledNumbersInput
 
-@testset "SI input" begin
+@testset "@SI(val)" begin
     @test @SI(4Y) == 4e24
     @test @SI(4Z) == 4e21
     @test @SI(4E) == 4e18
@@ -95,5 +95,59 @@ using ScaledNumbersInput
     @test @SI(2.4z) == 2.4e-21
     @test @SI(2.4y) == 2.4e-24
 
+    @test @SI(0.1Y) == 0.1e24
+    @test @SI(0.1Z) == 0.1e21
+    @test @SI(0.1E) == 0.1e18
+    @test @SI(0.1P) == 0.1e15
+    @test @SI(0.1T) == 0.1e12
+    @test @SI(0.1G) == 0.1e9
+    @test @SI(0.1M) == 0.1e6
+    @test @SI(0.1K) == 0.1e3
+    @test @SI(0.1k) == 0.1e3
+    @test @SI(0.1m) == 0.1e-3
+    @test @SI(0.1u) == 0.1e-6
+    @test @SI(0.1μ) == 0.1e-6
+    @test @SI(0.1n) == 0.1e-9
+    @test @SI(0.1p) == 0.1e-12
+    @test @SI(0.1f) == 0.1e-15
+    @test @SI(0.1a) == 0.1e-18
+    @test @SI(0.1z) == 0.1e-21
+    @test @SI(0.1y) == 0.1e-24
+    @test @SI(0.1Y) == 0.1e24
+    @test @SI(0.1Z) == 0.1e21
+    @test @SI(0.1E) == 0.1e18
+    @test @SI(0.1P) == 0.1e15
+    @test @SI(0.1T) == 0.1e12
+    @test @SI(0.1G) == 0.1e9
+    @test @SI(0.1M) == 0.1e6
+    @test @SI(0.1K) == 0.1e3
+    @test @SI(0.1k) == 0.1e3
+    @test @SI(0.1m) == 0.1e-3
+    @test @SI(0.1u) == 0.1e-6
+    @test @SI(0.1μ) == 0.1e-6
+    @test @SI(0.1n) == 0.1e-9
+    @test @SI(0.1p) == 0.1e-12
+    @test @SI(0.1f) == 0.1e-15
+    @test @SI(0.1a) == 0.1e-18
+    @test @SI(0.1z) == 0.1e-21
+    @test @SI(0.1y) == 0.1e-24
+
+    # Embedded in other expressions
     @test @SI(5) == 5
+    @test @SI([100a, 5u, 8.2T]) == [1.0e-16, 5.0e-6, 8.2e12]
+    v=0
+    @SI for k in 1:3
+        v += k + 1k # only second term (1k) is substituted
+    end
+    @test v == 3006.0
+
+    # When no rounding should happen:
+    @test @SI(0.3333333333333333m) == 0.3333333333333333e-3
+    @test @SI(0.3333333333333333u) == 0.3333333333333333e-6
+    @test @SI(0.3333333333333333n) == 0.3333333333333333e-9
+    @test @SI(0.3333333333333333p) == 0.3333333333333333e-12
+    @test @SI(0.3333333333333333f) == 0.3333333333333333e-15
+    @test @SI(0.3333333333333333a) == 0.3333333333333333e-18
+    @test @SI(0.3333333333333333z) == 0.3333333333333333e-21
+    @test @SI(0.3333333333333333y) == 0.3333333333333333e-24
 end

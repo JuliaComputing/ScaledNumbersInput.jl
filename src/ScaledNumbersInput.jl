@@ -2,6 +2,25 @@ module ScaledNumbersInput
 
 export @SI
 
+"""
+    snap(number)
+Rounds the number to the shortest representation that is still
+approximately the same as the original number.
+"""
+function snap(val)
+    shortest_length = length(string(val))
+    shortest_value = val
+    for sigdigits in 2:8
+        r = round(val; sigdigits)
+        rlen = length(string(r))
+        if isapprox(r, val, atol=eps(val)) && rlen <= shortest_length
+            shortest_length = rlen
+            shortest_value = r
+        end
+    end
+    return shortest_value
+end
+
 const si_scaling_orders = Dict{Symbol,Int}(
     :Y => 24,
     :Z => 21,
@@ -48,6 +67,8 @@ function si_scale!(expr::Expr)
             expr.args[1] = :/
         end
         expr.args[3] = exp10(abs(si_scaling_orders[expr.args[3]]))
+        expr2 = :(ScaledNumbersInput.snap($(expr.args[1])($(expr.args[2]), $(expr.args[3]))))
+        expr.args = expr2.args
     end
     # Recurse
     for arg in expr.args
