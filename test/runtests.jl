@@ -20,5 +20,80 @@ using ScaledNumbersInput
     @test @SI(4a) == 4e-18
     @test @SI(4z) == 4e-21
     @test @SI(4y) == 4e-24
+
+    @test @SI(100Y) == 100e24
+    @test @SI(100Z) == 100e21
+    @test @SI(100E) == 100e18
+    @test @SI(100P) == 100e15
+    @test @SI(100T) == 100e12
+    @test @SI(100G) == 100e9
+    @test @SI(100M) == 100e6
+    @test @SI(100K) == 100e3
+    @test @SI(100k) == 100e3
+    @test @SI(100m) == 100e-3
+    @test @SI(100u) == 100e-6
+    @test @SI(100μ) == 100e-6
+    @test @SI(100n) == 100e-9
+    @test @SI(100p) == 100e-12
+    @test @SI(100f) == 100e-15
+    @test @SI(100a) == 100e-18
+    @test @SI(100z) == 100e-21
+    @test @SI(100y) == 100e-24
+    @test @SI(100Y) == 100e24
+    @test @SI(100Z) == 100e21
+    @test @SI(100E) == 100e18
+    @test @SI(100P) == 100e15
+    @test @SI(100T) == 100e12
+    @test @SI(100G) == 100e9
+    @test @SI(100M) == 100e6
+    @test @SI(100K) == 100e3
+    @test @SI(100k) == 100e3
+    @test @SI(100m) == 100e-3
+    @test @SI(100u) == 100e-6
+    @test @SI(100μ) == 100e-6
+    @test @SI(100n) == 100e-9
+    @test @SI(100p) == 100e-12
+    @test @SI(100f) == 100e-15
+    @test @SI(100a) == 100e-18
+    @test @SI(100z) == 100e-21
+    @test @SI(100y) == 100e-24
+
+    @test @SI(2.4Y) == 2.4e24
+    @test @SI(2.4Z) == 2.4e21
+    @test @SI(2.4E) == 2.4e18
+    @test @SI(2.4P) == 2.4e15
+    @test @SI(2.4T) == 2.4e12
+    @test @SI(2.4G) == 2.4e9
+    @test @SI(2.4M) == 2.4e6
+    @test @SI(2.4K) == 2.4e3
+    @test @SI(2.4k) == 2.4e3
+    @test @SI(2.4m) == 2.4e-3
+    @test @SI(2.4u) == 2.4e-6
+    @test @SI(2.4μ) == 2.4e-6
+    @test @SI(2.4n) == 2.4e-9
+    @test @SI(2.4p) == 2.4e-12
+    @test @SI(2.4f) == 2.4e-15
+    @test @SI(2.4a) == 2.4e-18
+    @test @SI(2.4z) == 2.4e-21
+    @test @SI(2.4y) == 2.4e-24
+    @test @SI(2.4Y) == 2.4e24
+    @test @SI(2.4Z) == 2.4e21
+    @test @SI(2.4E) == 2.4e18
+    @test @SI(2.4P) == 2.4e15
+    @test @SI(2.4T) == 2.4e12
+    @test @SI(2.4G) == 2.4e9
+    @test @SI(2.4M) == 2.4e6
+    @test @SI(2.4K) == 2.4e3
+    @test @SI(2.4k) == 2.4e3
+    @test @SI(2.4m) == 2.4e-3
+    @test @SI(2.4u) == 2.4e-6
+    @test @SI(2.4μ) == 2.4e-6
+    @test @SI(2.4n) == 2.4e-9
+    @test @SI(2.4p) == 2.4e-12
+    @test @SI(2.4f) == 2.4e-15
+    @test @SI(2.4a) == 2.4e-18
+    @test @SI(2.4z) == 2.4e-21
+    @test @SI(2.4y) == 2.4e-24
+
     @test @SI(5) == 5
 end

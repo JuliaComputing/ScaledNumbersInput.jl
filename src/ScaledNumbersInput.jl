@@ -12,7 +12,6 @@ const si_scaling_orders = Dict{Symbol,Int}(
     :M => 6,
     :K => 3,
     :k => 3,
-    Symbol("") => 0,
     :m => -3,
     :u => -6,
     :μ => -6,
