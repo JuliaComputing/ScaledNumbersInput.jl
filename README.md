@@ -21,29 +21,29 @@ The following scaling factors are recognized:
 
 | Scaling Symbol | Factor |
 |:--------------:| ------:|
-| Y | 1e24 |
-| Z | 1e21 |
-| E | 1e18 |
-| P | 1e15 |
-| T | 1e12 |
-| G | 1e9 |
-| M | 1e6 |
-| K | 1e3 |
-| k | 1e3 |
-| m | 1e-3 |
-| u | 1e-6 |
-| μ | 1e-6 |
-| n | 1e-9 |
-| p | 1e-12 |
-| f | 1e-15 |
-| a | 1e-18 |
-| z | 1e-21 |
-| y | 1e-24 |
+| Y              | 1e24   |
+| Z              | 1e21   |
+| E              | 1e18   |
+| P              | 1e15   |
+| T              | 1e12   |
+| G              | 1e9    |
+| M              | 1e6    |
+| K              | 1e3    |
+| k              | 1e3    |
+| m              | 1e-3   |
+| u              | 1e-6   |
+| μ              | 1e-6   |
+| n              | 1e-9   |
+| p              | 1e-12  |
+| f              | 1e-15  |
+| a              | 1e-18  |
+| z              | 1e-21  |
+| y              | 1e-24  |
 
 ## Why not just define constants like `const M=1000000`?
 
-That is an option but it has a downside of using
-lower accuracy.  For example, compare:
+That is an option but it has a downside of lower accuracy.
+For example, compare:
 
 ```
 julia> @SI 100a
@@ -58,9 +58,9 @@ julia> 100a
 
 As you can see the `100 * 1e-18` has worse accuracy.
 
-The other downside is defining `cost` for each of the
-scaling factors uses a lot of single value variables
-from your code.  With `@SI` it reads a block in and
+The other downside is the scaling factors uses a lot of
+single value variables from your code.
+With `@SI` it reads a block in and
 only converts expressions with a literal number
 followed by an SI scaling factor.  For example:
 
