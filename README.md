@@ -1,5 +1,6 @@
 # ScaledNumbersInput
-Provides an `@SI` macro for converting numbers with SI prefixes
+
+Provides the `@SI` macro for converting numbers with SI prefixes
 
 ## Examples
 
@@ -42,7 +43,10 @@ The following scaling factors are recognized:
 
 ## Why not just define constants like `const M=1000000`?
 
-That is an option but it has a downside of lower accuracy.
+That was considered but it has two downsides
+
+### 1. Lower accuracy
+
 For example, compare:
 
 ```
@@ -58,8 +62,11 @@ julia> 100a
 
 As you can see the `100 * 1e-18` has worse accuracy.
 
-The other downside is the scaling factors uses a lot of
-single value variables from your code.
+### 2. Namespace pollution
+
+The other downside of defining constants
+for the scaling factors is it uses a lot of
+single character variables.
 With `@SI` it reads a block in and
 only converts expressions with a literal number
 followed by an SI scaling factor.  For example:
@@ -77,4 +84,7 @@ julia> f(10)
 
 ```
 
-Note that for `c2` the `k` in `2k` was interpreted as 2*1e3 while the preceeding `k` was not.
+Note that for `c2` the `k` in `2k` was interpreted as 2*1e3 while the preceeding `k` was not.  If `const k = 1000` was defined at
+the top level then the argument `k` would take
+precedence and `k` scalings inside `f` would
+not work.
