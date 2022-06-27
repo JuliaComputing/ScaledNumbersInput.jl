@@ -44,10 +44,10 @@ const si_scaling_orders = Dict{Symbol,Int}(
 
 const SI_syms = keys(si_scaling_orders)
 
-si_scale!(any) = any
+si_scale!(a) = a
 function si_scale!(t::T) where T<:Tuple
     for ti in t
-        si_scale!(ti)
+        ScaledNumbersInput.si_scale!(ti)
     end
 end
 function si_scale!(expr::Expr)
@@ -57,9 +57,9 @@ function si_scale!(expr::Expr)
     #     1: Symbol *
     #     2: Int64 10
     #     3: Symbol u
-    if expr.head == :call &&
+    if expr.head !== missing && expr.head == :call &&
             length(expr.args) == 3 &&
-            expr.args[1] == :(*) &&
+            expr.args[1] === :(*) &&
             expr.args[2] isa Real &&
             expr.args[3] in SI_syms
         if si_scaling_orders[expr.args[3]] < 0
@@ -72,7 +72,7 @@ function si_scale!(expr::Expr)
     end
     # Recurse
     for arg in expr.args
-        si_scale!(arg)
+        ScaledNumbersInput.si_scale!(arg)
     end
     return expr
 end
@@ -96,7 +96,7 @@ julia> @SI values = [1.2n, 100a, 5.7G]
 macro SI(exprs...)
     bl = Expr(:block)
     for expr in exprs
-        si_scale!(expr)
+        ScaledNumbersInput.si_scale!(expr)
         push!(bl.args, expr)
     end
     return esc(bl)

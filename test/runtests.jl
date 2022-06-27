@@ -151,3 +151,13 @@ using ScaledNumbersInput
     @test @SI(0.3333333333333333z) == 0.3333333333333333e-21
     @test @SI(0.3333333333333333y) == 0.3333333333333333e-24
 end
+
+using Aqua
+# Aqua tests
+# Intervals brings a bunch of ambiquities unfortunately
+Aqua.test_all(ScaledNumbersInput; ambiguities=false)
+
+@info "Running JET..."
+
+using JET
+display(JET.report_package(ScaledNumbersInput))
