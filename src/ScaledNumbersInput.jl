@@ -57,7 +57,7 @@ function si_scale!(expr::Expr)
     #     1: Symbol *
     #     2: Int64 10
     #     3: Symbol u
-    if expr.head !== missing && expr.head == :call &&
+    if expr.head == :call &&
             length(expr.args) == 3 &&
             expr.args[1] === :(*) &&
             expr.args[2] isa Real &&
