@@ -1,7 +1,7 @@
 name = "ScaledNumbersInput"
 uuid = "8c0df181-3ed8-49fb-8e60-811d535a551e"
 authors = ["Glen Hertz <glen.hertz@gmail.com>"]
-version = "0.1.0"
+version = "1.0.0"
 
 [deps]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
